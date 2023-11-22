@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.leoduarte</groupId>
+    <artifactId>dummy-data</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>DummyData</name>
+    <description>Projeto que provê vários tipos de dados fakes para usar em aplicações</description>
+
+    <inceptionYear>2023</inceptionYear>
+    <licenses>
+        <license>
+            <name>Software License 1.0</name>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:${scm-provider}:${scm-url}/${scm-username}/${repository-name}.git</connection>
+        <developerConnection>
+            scm:${scm-provider}:${ssh-scm-connection}:${scm-username}/${repository-name}.git
+        </developerConnection>
+        <url>${scm-url}/${scm-username}/${repository-name}</url>
+        <tag>${project.version}</tag>
+    </scm>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>${scm-url}/${scm-username}/${repository-name}/issues</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus-maven-releases</id>
+            <name>Maven Hosted Releases Repository</name>
+            <url>http://${registry-ip}:${registry-port}/repository/${maven-releases-repository.name}/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-maven-snapshots</id>
+            <name>Maven Hosted Snapshots Repository</name>
+            <url>http://${registry-ip}:${registry-port}/repository/${maven-snapshots-repository.name}/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <properties>
+        <!-- ===================================================================== -->
+        <!-- =============== Personal properties and Local configs =============== -->
+        <!-- ===================================================================== -->
+
+        <scm-provider>git</scm-provider>
+        <scm-url>https://github.com</scm-url>
+        <scm-username>${settings-xml.scm-username}</scm-username>
+        <repository-name>${project.artifactId}</repository-name>
+        <ssh-scm-connection>git@github.com</ssh-scm-connection>
+
+        <registry-ip>localhost</registry-ip>
+        <registry-port>8082</registry-port>
+        <maven-releases-repository.name>nexus-maven-releases</maven-releases-repository.name>
+        <maven-snapshots-repository.name>nexus-maven-snapshots</maven-snapshots-repository.name>
+
+        <!-- ===================================================================== -->
+        <!-- =============================== Build =============================== -->
+        <!-- ===================================================================== -->
+
+        <java.version>17</java.version>
+        <encoding>UTF-8</encoding>
+
+        <project.build.indentSize>4</project.build.indentSize>
+        <project.build.lineLength>160</project.build.lineLength>
+        <project.build.os>unknown</project.build.os>
+        <project.build.arch>x86_64</project.build.arch>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.source>${encoding}</project.reporting.source>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+        <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+        <maven.compiler.failOnWarning>false</maven.compiler.failOnWarning>
+        <maven.build.indentSize>4</maven.build.indentSize>
+        <maven.deploy.only>false</maven.deploy.only>
+
+        <skipITs>true</skipITs>
+
+        <!-- ===================================================================== -->
+        <!-- ============================= Plugins =============================== -->
+        <!-- ===================================================================== -->
+
+        <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+
+        <!-- ===================================================================== -->
+        <!-- ============================ Libraries ============================== -->
+        <!-- ===================================================================== -->
+
+        <lombok.version>1.18.30</lombok.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-Amapstruct.defaultComponentModel=spring</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>Enforce Plugin in Action</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <banDuplicatePomDependencyVersions/>
+                                <requireMavenVersion>
+                                    <version>[3.8.5,)</version>
+                                    <message>Invalid Maven version. It should, at least, be 3.8.5</message>
+                                </requireMavenVersion>
+                                <requireJavaVersion>
+                                    <version>[17,)</version>
+                                    <message>Invalid Java version. It should, at least, be 17</message>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

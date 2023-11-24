@@ -28,15 +28,15 @@ public class Nome {
             "Beatriz", "Fábio", "Isadora", "Gustavo", "Daniela",
             "Rogério", "Isabel", "Marcos", "Renata", "Rafael");
 
-    public String getNomeAleatorio() {
+    public static String getNomeAleatorio() {
         return nomesProprios.get(getRandomico(nomesProprios.size()));
     }
 
-    public List<String> getListaDeNomes(Integer tamanho) {
+    public static List<String> getListaDeNomes(Integer tamanho) {
         return nomesProprios.stream().limit(tamanho).toList();
     }
 
-    public List<String> getListaDeNomesIniciadosCom(String inicioDoNome) {
+    public static List<String> getListaDeNomesIniciadosCom(String inicioDoNome) {
         return nomesProprios.stream().filter(nome -> nome.startsWith(inicioDoNome)).toList();
     }
 }

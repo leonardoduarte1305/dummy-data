@@ -27,15 +27,15 @@ public class Sobrenome {
             "Figueiredo", "Junqueira", "Miranda", "Oliveira", "Quintana",
             "Santiago", "Torres", "Vargas", "Ximenes", "Zambrano");
 
-    public String getSobrenomeAleatorio() {
+    public static String getSobrenomeAleatorio() {
         return sobrenomes.get(getRandomico(sobrenomes.size()));
     }
 
-    public List<String> getListaDeSobrenomes(Integer tamanho) {
+    public static List<String> getListaDeSobrenomes(Integer tamanho) {
         return sobrenomes.stream().limit(tamanho).toList();
     }
 
-    public List<String> getListaDeSobrenomesIniciadosCom(String inicioDoSobrenome) {
+    public static List<String> getListaDeSobrenomesIniciadosCom(String inicioDoSobrenome) {
         return sobrenomes.stream().filter(sobrenome -> sobrenome.startsWith(inicioDoSobrenome)).toList();
     }
 }

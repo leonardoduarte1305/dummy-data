@@ -8,41 +8,14 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <name>DummyData</name>
+    <inceptionYear>2023</inceptionYear>
     <description>Projeto que provê vários tipos de dados fakes para usar em aplicações</description>
 
-    <inceptionYear>2023</inceptionYear>
     <licenses>
         <license>
             <name>Software License 1.0</name>
         </license>
     </licenses>
-
-    <scm>
-        <connection>scm:${scm-provider}:${scm-url}/${scm-username}/${repository-name}.git</connection>
-        <developerConnection>
-            scm:${scm-provider}:${ssh-scm-connection}:${scm-username}/${repository-name}.git
-        </developerConnection>
-        <url>${scm-url}/${scm-username}/${repository-name}</url>
-        <tag>${project.version}</tag>
-    </scm>
-
-    <issueManagement>
-        <system>Github</system>
-        <url>${scm-url}/${scm-username}/${repository-name}/issues</url>
-    </issueManagement>
-
-    <distributionManagement>
-        <repository>
-            <id>nexus-maven-releases</id>
-            <name>Maven Hosted Releases Repository</name>
-            <url>http://${registry-ip}:${registry-port}/repository/${maven-releases-repository.name}/</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-maven-snapshots</id>
-            <name>Maven Hosted Snapshots Repository</name>
-            <url>http://${registry-ip}:${registry-port}/repository/${maven-snapshots-repository.name}/</url>
-        </snapshotRepository>
-    </distributionManagement>
 
     <properties>
         <!-- ===================================================================== -->
@@ -54,11 +27,6 @@
         <scm-username>${settings-xml.scm-username}</scm-username>
         <repository-name>${project.artifactId}</repository-name>
         <ssh-scm-connection>git@github.com</ssh-scm-connection>
-
-        <registry-ip>localhost</registry-ip>
-        <registry-port>8082</registry-port>
-        <maven-releases-repository.name>nexus-maven-releases</maven-releases-repository.name>
-        <maven-snapshots-repository.name>nexus-maven-snapshots</maven-snapshots-repository.name>
 
         <!-- ===================================================================== -->
         <!-- =============================== Build =============================== -->
@@ -164,4 +132,31 @@
             </plugin>
         </plugins>
     </build>
+
+    <scm>
+        <connection>scm:${scm-provider}:${scm-url}/${scm-username}/${repository-name}.git</connection>
+        <developerConnection>scm:${scm-provider}:${ssh-scm-connection}:${scm-username}/${repository-name}.git</developerConnection>
+        <url>${scm-url}/${scm-username}/${repository-name}</url>
+        <tag>${project.version}</tag>
+    </scm>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>${scm-url}/${scm-username}/${repository-name}/issues</url>
+    </issueManagement>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub leonardoduarte1305 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/${scm-username}/${project.artifactId}/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </distributionManagement>
+
 </project>

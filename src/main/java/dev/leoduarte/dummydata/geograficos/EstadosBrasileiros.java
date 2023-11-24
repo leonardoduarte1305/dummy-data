@@ -16,29 +16,29 @@ public class EstadosBrasileiros {
             "Distrito Federal");
 
 
-    public String getSiglaRandomica() {
+    public static String getSiglaRandomica() {
         return siglas.get(getRandomico(estados.size()));
     }
 
-    public String getSigla(String nomeCompleto) {
+    public static String getSigla(String nomeCompleto) {
         int index = estados.indexOf(nomeCompleto);
         return siglas.get(index);
     }
 
-    public String getNomeCompletoRandomico() {
+    public static String getNomeCompletoRandomico() {
         return estados.get(getRandomico(estados.size()));
     }
 
-    public String getNomeCompleto(String sigla) {
+    public static String getNomeCompleto(String sigla) {
         int index = siglas.indexOf(sigla);
         return estados.get(index);
     }
 
-    public List<String> getListaDeEstados() throws ArrayIndexOutOfBoundsException {
+    public static List<String> getListaDeEstados() throws ArrayIndexOutOfBoundsException {
         return estados;
     }
 
-    public List<String> getListaDeSiglas() throws ArrayIndexOutOfBoundsException {
+    public static List<String> getListaDeSiglas() throws ArrayIndexOutOfBoundsException {
         return siglas;
     }
 }

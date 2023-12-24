@@ -8,23 +8,16 @@ import java.util.List;
 
 class SobrenomeTest {
 
-    private Sobrenome sobrenome;
-
-    @BeforeEach
-    void setup() {
-        sobrenome = new Sobrenome();
-    }
-
     @Test
     void getSobrenomeAleatorio() {
-        String sobrenomeAleatorio1 = sobrenome.getSobrenomeAleatorio();
-        String sobrenomeAleatorio2 = sobrenome.getSobrenomeAleatorio();
-        String sobrenomeAleatorio3 = sobrenome.getSobrenomeAleatorio();
-        String sobrenomeAleatorio4 = sobrenome.getSobrenomeAleatorio();
-        String sobrenomeAleatorio5 = sobrenome.getSobrenomeAleatorio();
-        String sobrenomeAleatorio6 = sobrenome.getSobrenomeAleatorio();
-        String sobrenomeAleatorio7 = sobrenome.getSobrenomeAleatorio();
-        String sobrenomeAleatorio8 = sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio1 = Sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio2 = Sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio3 = Sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio4 = Sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio5 = Sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio6 = Sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio7 = Sobrenome.getSobrenomeAleatorio();
+        String sobrenomeAleatorio8 = Sobrenome.getSobrenomeAleatorio();
 
         System.out.println("sobrenomeAleatorio1 = " + sobrenomeAleatorio1);
         System.out.println("sobrenomeAleatorio2 = " + sobrenomeAleatorio2);
@@ -39,7 +32,7 @@ class SobrenomeTest {
     @Test
     void getListaDeSobrenomes() {
         Integer tamanho = 5;
-        List<String> listaDeSobrenomes = sobrenome.getListaDeSobrenomes(tamanho);
+        List<String> listaDeSobrenomes = Sobrenome.getListaDeSobrenomes(tamanho);
         listaDeSobrenomes.forEach(System.out::println);
 
         Assertions.assertEquals(tamanho, listaDeSobrenomes.size());
@@ -47,13 +40,13 @@ class SobrenomeTest {
 
     @Test
     void getListaDeSobrenomesIniciadosComL() {
-        List<String> iniciadosComL = sobrenome.getListaDeSobrenomesIniciadosCom("L");
+        List<String> iniciadosComL = Sobrenome.getListaDeSobrenomesIniciadosCom("L");
         iniciadosComL.forEach(System.out::println);
     }
 
     @Test
     void getListaDeSobrenomesIniciadosComN() {
-        List<String> iniciadosComN = sobrenome.getListaDeSobrenomesIniciadosCom("N");
+        List<String> iniciadosComN = Sobrenome.getListaDeSobrenomesIniciadosCom("N");
         iniciadosComN.forEach(System.out::println);
     }
 }

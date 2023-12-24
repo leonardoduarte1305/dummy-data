@@ -1,30 +1,22 @@
 package dev.leoduarte.dummydata.pessoais;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 class NomeTest {
 
-    private Nome nome;
-
-    @BeforeEach
-    void setup() {
-        nome = new Nome();
-    }
-
     @Test
     void getNomeAleatorio() {
-        String nomeAleatorio1 = nome.getNomeAleatorio();
-        String nomeAleatorio2 = nome.getNomeAleatorio();
-        String nomeAleatorio3 = nome.getNomeAleatorio();
-        String nomeAleatorio4 = nome.getNomeAleatorio();
-        String nomeAleatorio5 = nome.getNomeAleatorio();
-        String nomeAleatorio6 = nome.getNomeAleatorio();
-        String nomeAleatorio7 = nome.getNomeAleatorio();
-        String nomeAleatorio8 = nome.getNomeAleatorio();
+        String nomeAleatorio1 = Nome.getNomeAleatorio();
+        String nomeAleatorio2 = Nome.getNomeAleatorio();
+        String nomeAleatorio3 = Nome.getNomeAleatorio();
+        String nomeAleatorio4 = Nome.getNomeAleatorio();
+        String nomeAleatorio5 = Nome.getNomeAleatorio();
+        String nomeAleatorio6 = Nome.getNomeAleatorio();
+        String nomeAleatorio7 = Nome.getNomeAleatorio();
+        String nomeAleatorio8 = Nome.getNomeAleatorio();
 
         System.out.println("nomeAleatorio1 = " + nomeAleatorio1);
         System.out.println("nomeAleatorio2 = " + nomeAleatorio2);
@@ -39,7 +31,7 @@ class NomeTest {
     @Test
     void getListaDeNomes() {
         Integer tamanho = 5;
-        List<String> listaDeNomes = nome.getListaDeNomes(tamanho);
+        List<String> listaDeNomes = Nome.getListaDeNomes(tamanho);
         listaDeNomes.forEach(System.out::println);
 
         Assertions.assertEquals(tamanho, listaDeNomes.size());
@@ -47,13 +39,13 @@ class NomeTest {
 
     @Test
     void getListaDeNomesIniciadosComL() {
-        List<String> iniciadosComL = nome.getListaDeNomesIniciadosCom("L");
+        List<String> iniciadosComL = Nome.getListaDeNomesIniciadosCom("L");
         iniciadosComL.forEach(System.out::println);
     }
 
     @Test
     void getListaDeNomesIniciadosComN() {
-        List<String> iniciadosComN = nome.getListaDeNomesIniciadosCom("N");
+        List<String> iniciadosComN = Nome.getListaDeNomesIniciadosCom("N");
         iniciadosComN.forEach(System.out::println);
     }
 

@@ -4,7 +4,7 @@
 
     <groupId>dev.leoduarte</groupId>
     <artifactId>dummy-data</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.2-SNAPSHOT</version>
 
     <name>DummyData</name>
     <inceptionYear>2023</inceptionYear>
@@ -142,7 +142,7 @@
         <connection>scm:${scm-provider}:${scm-url}/${scm-username}/${repository-name}.git</connection>
         <developerConnection>scm:${scm-provider}:${ssh-scm-connection}:${scm-username}/${repository-name}.git</developerConnection>
         <url>${scm-url}/${scm-username}/${repository-name}</url>
-        <tag>dummy-data-0.0.1</tag>
+        <tag>${project.version}</tag>
     </scm>
 
     <issueManagement>
